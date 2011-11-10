@@ -1,0 +1,518 @@
+-- Clipboard FileMaker Objects to XML
+-- version 2.2, Daniel A. Shockley
+
+-- 2.2 - updated fmObjectTranslator code
+-- 2.1 - updated fmObjectTranslator code
+-- 2.0 - updated fmObjectTranslator code
+-- 1.9 - updated fmObjectTranslator code
+-- 1.8 - "clipboard convert" now ADDs the other data, not replace clipboard
+-- 1.7 - handles UTF-8 properly now
+-- 1.6 - updated fmObjectTranslator code - fix FM line return char
+-- 1.5 - updated fmObjectTranslator code - handles larger data sets
+-- 1.4 - updated fmObjectTranslator code
+-- 1.3 - put the actual conversion code into a handler with script object
+-- 1.2 - cleaned up for use in Script menu
+-- 1.1 - added ability to determine which FM class is in clipboard
+
+on run
+	
+	set objTrans to fmObjectTranslator_Instantiate({})
+	
+	set clipboardType to checkClipboardForObjects({}) of objTrans
+	
+	if clipboardType is false then
+		display dialog "The clipboard did not contain any FileMaker objects."
+		return false
+	end if
+	
+	clipboardConvertToXML({}) of objTrans
+	
+	return true
+	
+	
+end run
+
+
+
+
+
+
+
+
+
+
+
+on fmObjectTranslator_Instantiate(prefs)
+	
+	script fmObjectTranslator
+		-- version 2.2, Daniel A. Shockley
+		
+		-- 2.2 - prettify fails gracefully - if it cannot prettify, it returns the original unmodified
+		-- 2.1 - modified the "tidy" command to essentially NEVER wrap (set to petabyte-long lines) to avoid breaking certain HexData tags for layout objects
+		-- 2.0 - added prettify code when converting to XML (uses -raw switch to avoid any HTML entity encoding); added a tell System Events block around file read/write code to avoid name-space conflict when compiling in FileMaker; added support for Script Folders that use the "Group" tag but are still XMSC data type
+		-- 1.9 - remove the extraneous Ascii 10 after the Layout tag that FM10 adds when copying layout objects; dropped unused code for dataObjectToString()
+		-- 1.8 - do not REPLACE what is in the clipboard when doing "clipboardConvert" - instead, ADD the XML string or FM Objects
+		-- 1.7 - handles clipboard data as UTF-8 to avoid mangling special characters
+		-- 1.6 - handles the FileMaker line return character (when converting from HEX, it became ASCII 194, 182, rather than ASCII 166)
+		-- 1.5.1 - bug fix: hexToAscii now properly returns content of XML file
+		-- 1.5 - writes data to temp files to improve reliability
+		-- 1.4 - added more debugging; renamed handlers for clarity
+		
+		property ScriptName : "FM Object Translator"
+		
+		property fmObjectList : {}
+		property tempDataName : "temp.data"
+		property tempXMLName : "temp.xml"
+		property badLayoutCodeStart : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" & (ASCII character 10) & "<Layout" & (ASCII character 10) & " enclosingRectTop=\""
+		property goodLayoutCodeStart : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" & (ASCII character 10) & "<Layout enclosingRectTop=\""
+		property fmObjCodes : {¬
+			{objName:"Step", objCode:"XMSS"}, ¬
+			{objName:"Layout", objCode:"XMLO"}, ¬
+			{objName:"Group", objCode:"XMSC"}, ¬
+			{objName:"Script", objCode:"XMSC"}, ¬
+			{objName:"Field", objCode:"XMFD"}, ¬
+			{objName:"CustomFunction", objCode:"XMFN"}, ¬
+			{objName:"BaseTable", objCode:"XMTB"} ¬
+				}
+		
+		property currentCode : ""
+		property debugMode : false
+		property codeAsXML : ""
+		property codeAsObjects : ""
+		
+		on run
+			-- initialize properties of this script object:
+			
+			-- turn the objCodes into class objects for fmObjectList
+			set fmObjectList to {}
+			repeat with oneObject in fmObjCodes
+				set oneCode to objCode of oneObject
+				set oneClass to classFromCode(oneCode)
+				copy {objName:objName of oneObject, objCode:objCode of oneObject, objClass:oneClass} to end of fmObjectList
+			end repeat
+		end run
+		
+		
+		-----------------------------------
+		------ PUBLIC METHODS ------
+		-----------------------------------
+		
+		
+		on clipboardConvertToFMObjects(prefs)
+			-- 1.8 - ADD the FM Objects to the string in clipboard, not replace
+			-- converts the contents of the clipboard from XML string to FM Objects
+			
+			if not checkClipboardForValidXML({}) then
+				if debugMode then "clipboardSetToTranslatedFMObjects: Clipboard has no valid XML."
+				return false
+			end if
+			if currentCode is "" then
+				checkClipboardForValidXML({})
+				if currentCode is "" then
+					return false
+				end if
+			end if
+			
+			set stringFmXML to get the clipboard
+			
+			set fmObjects to convertXmlToObjects(stringFmXML)
+			
+			set the clipboard to fmObjects
+			
+			set fmClipboard to get the clipboard
+			
+			set newClip to {string:stringFmXML} & fmClipboard
+			
+			set the clipboard to newClip
+			
+			return true
+			
+		end clipboardConvertToFMObjects
+		
+		
+		on clipboardConvertToXML(prefs)
+			
+			-- 1.9 - remove the extraneous ASCII 10 added after Layout tag by FM10
+			-- 1.8 - ADD XML string to FM objects in clipboard, not replace
+			-- converts the contents of the clipboard from FM Objects to XML string
+			
+			if currentCode is "" then
+				if not checkClipboardForObjects({}) then
+					if debugMode then "clipboardConvertToXML: Clipboard has no valid FM Objects."
+					return false
+				end if
+			end if
+			if currentCode is "" then
+				checkClipboardForObjects({})
+				if currentCode is "" then
+					return false
+				end if
+			end if
+			
+			set fmClipboard to get the clipboard
+			
+			set xmlTranslation to clipboardgetobjectsasXML({}) -- as string
+			
+			
+			
+			
+			
+			
+			if currentCode is "XMLO" then
+				
+				--				display dialog xmlTranslation contains badLayoutCodeStart
+				
+				set xmlTranslation to replaceSimple(xmlTranslation, badLayoutCodeStart, goodLayoutCodeStart)
+				
+				set testChar to text 44 thru 48 of xmlTranslation
+				--				display dialog "Char:" & testChar & return & "currentCode:" & currentCode --& return & "ASCII:" & (ASCII number of testChar)
+				
+			end if
+			
+			
+			
+			
+			
+			
+			
+			set newClip to {string:xmlTranslation} & fmClipboard
+			
+			set the clipboard to newClip
+			
+			return true
+			
+		end clipboardConvertToXML
+		
+		
+		on clipboardgetobjectsasXML(prefs)
+			-- returns the XML translation of FM objects in the clipboard
+			if currentCode is "" then
+				checkClipboardForObjects({})
+			end if
+			if currentCode is "" then
+				return ""
+			end if
+			
+			set thisClass to classFromCode(currentCode)
+			set fmObjects to get the clipboard as thisClass
+			
+			return convertObjectsToXML(fmObjects)
+			
+		end clipboardgetobjectsasXML
+		
+		
+		on clipboardGetXMLAsObjects(prefs)
+			-- returns the FM object translation of XML string in the clipboard
+			if currentCode is "" then
+				checkClipboardForValidXML({})
+			end if
+			if currentCode is "" then
+				return ""
+			end if
+			
+			set stringFmXML to get the clipboard as string
+			
+			return convertXmlToObjects(stringFmXML)
+			
+		end clipboardGetXMLAsObjects
+		
+		
+		
+		
+		
+		-----------------------------------
+		------ PRIVATE METHODS ------
+		-----------------------------------
+		
+		
+		
+		on checkClipboardForValidXML(prefs)
+			-- checks clipboard for XML that represents FM objects
+			-- returns true if it does, false if not
+			
+			set testClipboard to get the clipboard
+			
+			return checkStringForValidXML(testClipboard)
+			
+		end checkClipboardForValidXML
+		
+		
+		on checkClipboardForObjects(prefs)
+			-- checks clipboard for FM Objects (as classes, not XML)
+			-- returns true if it does, false if not
+			
+			set clipboardClasses to clipboard info
+			
+			set clipboardType to ""
+			repeat with oneTypeAndLength in clipboardClasses
+				set oneTypeAndLength to contents of oneTypeAndLength
+				
+				repeat with oneClass in fmObjectList
+					set {className, classType} to {objName of oneClass, objClass of oneClass}
+					if (item 1 of oneTypeAndLength) is classType then
+						set clipboardType to objCode of oneClass
+						exit repeat
+					end if
+				end repeat
+			end repeat
+			
+			if debugMode then log "checkClipboardForObjects: clipboardType: " & clipboardType
+			
+			if clipboardType is "" then
+				return false
+			else
+				set currentCode to clipboardType
+				return true
+			end if
+			
+		end checkClipboardForObjects
+		
+		on convertObjectsToXML(fmObjects)
+			
+			set objectsAsXML to dataObjectToUTF8(fmObjects)
+			
+			set objectsAsXML to prettifyXML(objectsAsXML)
+			
+			return objectsAsXML
+			
+		end convertObjectsToXML
+		
+		
+		
+		on convertXmlToObjects(stringFmXML)
+			-- converts some string of XML into fmObjects as FM data type
+			if currentCode is "" then
+				checkStringForValidXML(stringFmXML)
+			end if
+			if currentCode is "" then
+				return ""
+			end if
+			
+			set thisClass to currentClass()
+			
+			set stringLength to length of stringFmXML
+			
+			
+			set tempXMLPosix to (makeTempDirPosix() & tempXMLName)
+			set xmlFilePath to (POSIX file tempXMLPosix) as string
+			tell application "System Events"
+				set xmlHandle to open for access file xmlFilePath with write permission
+				write stringFmXML to xmlHandle as «class utf8»
+				close access xmlHandle
+				set fmObjects to read alias xmlFilePath as thisClass
+			end tell
+			
+			return fmObjects
+			
+			
+		end convertXmlToObjects
+		
+		
+		
+		
+		on checkStringForValidXML(someString)
+			-- checks someString for XML that represents FM objects
+			-- returns true if it does, false if not
+			
+			try
+				tell application "System Events"
+					set xmlData to make new XML data with data someString
+					set fmObjectName to name of XML element 1 of XML element 1 of xmlData
+				end tell
+			on error errMsg number errNum
+				if errNum is -1719 then
+					-- couldn't find an XML element, so NOT valid XML
+					return false
+				else if errNum is -2753 then
+					-- couldn't create XML from someString, so NOT valid XML
+					return false
+				else
+					error errMsg number errNum
+				end if
+			end try
+			
+			
+			set currentCode to ""
+			repeat with oneObjectType in fmObjectList
+				
+				if debugMode then log objName of oneObjectType
+				if (fmObjectName is objName of oneObjectType) then
+					set currentCode to objCode of oneObjectType
+					set objectType to objClass of oneObjectType
+					exit repeat
+				end if
+			end repeat
+			
+			if debugMode then log "checkStringForValidXML: currentCode: " & currentCode
+			
+			if currentCode is "" then
+				return false
+			else
+				return true
+			end if
+			
+		end checkStringForValidXML
+		
+		
+		on currentClass()
+			return classFromCode(currentCode)
+		end currentClass
+		
+		
+		on classFromCode(objCode)
+			return run script "«class " & objCode & "»"
+		end classFromCode
+		
+		
+		on makeTempDirPosix()
+			set dirPosix to (do shell script "mktemp -d -t tempFMObject") & "/"
+			return dirPosix
+		end makeTempDirPosix
+		
+		
+		
+		on prettifyXML(someXML)
+			-- version 1.1, Daniel A. Shockley
+			
+			try
+				set tidyShellCommand to "echo " & quoted form of someXML & " | tidy -xml -i -m -raw -wrap 999999999999999"
+				-- NOTE: wrapping of lines needs to NEVER occur, so cover petabyte-long lines 
+				set prettyXML to do shell script tidyShellCommand
+				
+			on error errMsg number errNum
+				-- any error above should fail gracefully and just return the original code
+				return someXML
+				
+			end try
+			
+			return prettyXML
+			
+		end prettifyXML
+		
+		
+		on dataObjectToUTF8(fmObjects)
+			-- version 2.0
+			
+			-- 2.0 - wrapped read/write commands in System Events tell block to avoid name-space conflicts in FileMaker; handled posix/path/file differences to avoid errors (seemed to have error converting from Posix before file existed?)
+			
+			tell application "System Events"
+				try
+					set tempDataFolderPosix to my makeTempDirPosix()
+					set tempDataFolderPath to (POSIX file tempDataFolderPosix) as string
+					
+					set tempDataPosix to tempDataFolderPosix & tempDataName
+					set tempDataPath to tempDataFolderPath & tempDataName
+					
+					try
+						close access file tempDataPath
+					end try
+					set someHandle to open for access file tempDataPath with write permission
+					
+					write fmObjects to someHandle
+					
+					try
+						close access file tempDataPath
+					end try
+				on error errMsg number errNum
+					try
+						close access tempDataFile
+					end try
+					error errMsg number errNum
+				end try
+				
+				read file tempDataPath as «class utf8»
+			end tell
+			return result
+			
+		end dataObjectToUTF8
+		
+		
+		
+		
+		-----------------------------------
+		------ LIBRARY METHODS ------
+		-----------------------------------
+		
+		
+		
+		on parseChars(thisText, parseString)
+			-- version 1.2, Daniel A. Shockley, http://www.danshockley.com
+			
+			set oldDelims to AppleScript's text item delimiters
+			try
+				set AppleScript's text item delimiters to the {parseString as string}
+				set the parsedList to every text item of thisText
+				set AppleScript's text item delimiters to oldDelims
+				return parsedList
+			on error errMsg number errNum
+				try
+					set AppleScript's text item delimiters to oldDelims
+				end try
+				error "ERROR: parseChars() handler: " & errMsg number errNum
+			end try
+		end parseChars
+		
+		on replaceSimple(thisText, oldChars, newChars)
+			-- version 1.1, Daniel A. Shockley http://www.danshockley.com
+			
+			-- 1.1 coerces the newChars to a STRING, since other data types do not always coerce
+			--     (example, replacing "nine" with 9 as number replaces with "")
+			set oldDelims to AppleScript's text item delimiters
+			set AppleScript's text item delimiters to the oldChars
+			set the parsedList to every text item of thisText
+			set AppleScript's text item delimiters to the {(newChars as string)}
+			set the newText to the parsedList as string
+			set AppleScript's text item delimiters to oldDelims
+			return newText
+			
+		end replaceSimple
+		
+		on patternCount(thisText, searchString)
+			-- version 1.1   -   changed result variable name
+			
+			set {oldDelims, AppleScript's text item delimiters} to {AppleScript's text item delimiters, searchString as string}
+			try
+				-- variable should not be same name as handler - caused problems in certain editors
+				set patternCountResult to (count of (text items of thisText)) - 1
+				set AppleScript's text item delimiters to oldDelims
+				
+				return patternCountResult
+			on error errMsg number errNum
+				try
+					set AppleScript's text item delimiters to oldDelims
+				end try
+				error "ERROR: patternCount() handler: " & errMsg number errNum
+			end try
+		end patternCount
+		
+		
+		
+		on logConsole(processName, consoleMsg)
+			-- version 1.8 - Daniel A. Shockley, http://www.danshockley.com
+			
+			-- 1.8 - coerces to string first (since numbers would not directly convert for 'quoted form'
+			-- 1.7 - now works with Leopard by using the "logger" command instead of just appending to log file
+			-- 1.6- the 'space' constant instead of literal spaces for readability, removed trailing space from the hostname command
+			-- 1.5- uses standard date-stamp format	
+			
+			set shellCommand to "logger" & space & "-t" & space & quoted form of processName & space & quoted form of (consoleMsg as string)
+			
+			do shell script shellCommand
+			return shellCommand
+		end logConsole
+		
+		
+		
+	end script
+	
+	run fmObjectTranslator
+	
+	return fmObjectTranslator
+	
+	
+end fmObjectTranslator_Instantiate
+
+
+
+
+
