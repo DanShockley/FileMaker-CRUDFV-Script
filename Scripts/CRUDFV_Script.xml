@@ -7,7 +7,7 @@
   </Step>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="89" name="Comment">
-    <Text>Version 1.3 ( LOCKED as of 2011-11-10, ~~~~ PM - phillips )</Text>
+    <Text>Version 1.3 ( LOCKED as of 2011-11-10, ~~~~ PM - phillipszzz )</Text>
   </Step>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="89" name="Comment"></Step>
@@ -43,7 +43,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "Method" )]]>
+        <![CDATA[/*#P ( "Method" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -59,7 +59,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "TableName" )]]>
+        <![CDATA[/*#P ( "TableName" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -75,7 +75,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "TableID" )]]>
+        <![CDATA[/*#P ( "TableID" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -88,7 +88,7 @@
   <Step enable="False" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "KeyFieldValue" )]]>
+        <![CDATA[/*#P ( "KeyFieldValue" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -104,7 +104,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "ReadFieldList" )]]>
+        <![CDATA[/*#P ( "ReadFieldList" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -120,7 +120,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "UpdateDict" )]]>
+        <![CDATA[/*#P ( "UpdateDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -136,7 +136,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "SearchRequests" )]]>
+        <![CDATA[/*#P ( "SearchRequests" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -152,7 +152,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "UseFoundSet" )]]>
+        <![CDATA[/*#P ( "UseFoundSet" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -168,7 +168,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "UpdateMultiple" )]]>
+        <![CDATA[/*#P ( "UpdateMultiple" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -184,7 +184,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "DeleteMultiple" )]]>
+        <![CDATA[/*#P ( "DeleteMultiple" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -200,7 +200,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "ShowDialogs" )]]>
+        <![CDATA[/*#P ( "ShowDialogs" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -216,7 +216,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "NoCommit" )]]>
+        <![CDATA[/*#P ( "NoCommit" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -232,7 +232,7 @@
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#P ( "ViewParametersDict" )]]>
+        <![CDATA[/*#P ( "ViewParametersDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -263,10 +263,10 @@ IsEmpty ( $Method )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "Not all of the necessary parameters were passed.  Please contact your database administrator." )]]>
+# ( "ResultDescription" ; "Not all of the necessary parameters were passed.  Please contact your database administrator." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -284,14 +284,14 @@ IsEmpty ( $Method )]]>
   <Step enable="True" id="87" name="Show Custom Dialog">
     <Title>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "Result" )]]>
+        <![CDATA[/*DictGet ( $result ; "Result" )*/]]>
 </Calculation>
     </Title>
     <Message>
       <Calculation>
-        <![CDATA["File: " & DictGet ( $result ; "FileName" ) & "¶" 
-& "Script: " & DictGet ( $result ; "ScriptName" ) & "¶" 
-& "Result: " & DictGet ( $result ; "ResultDescription" )]]>
+        <![CDATA[/*"File: " & DictGet ( $result ; "FileName" ) & "¶" 
+& "Script: " & DictGet ( $result ; "ScriptName" ) & "¶" 
+& "Result: " & DictGet ( $result ; "ResultDescription" )*/]]>
 </Calculation>
     </Message>
     <ButtonCaptions>
@@ -311,21 +311,21 @@ IsEmpty ( $Method )]]>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[$Method ≠ "C" and 
-$Method ≠ "R" and 
-$Method ≠ "U" and 
-$Method ≠ "D" and 
-$Method ≠ "F" and 
-$Method ≠ "V"]]>
+      <![CDATA[$Method ≠ "C" and 
+$Method ≠ "R" and 
+$Method ≠ "U" and 
+$Method ≠ "D" and 
+$Method ≠ "F" and 
+$Method ≠ "V"]]>
 </Calculation>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "Invalid method specified.  Please contact your database administrator." )]]>
+# ( "ResultDescription" ; "Invalid method specified.  Please contact your database administrator." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -343,14 +343,14 @@ $Method ≠ "V"]]>
   <Step enable="True" id="87" name="Show Custom Dialog">
     <Title>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "Result" )]]>
+        <![CDATA[/*DictGet ( $result ; "Result" )*/]]>
 </Calculation>
     </Title>
     <Message>
       <Calculation>
-        <![CDATA["File: " & DictGet ( $result ; "FileName" ) & "¶" 
-& "Script: " & DictGet ( $result ; "ScriptName" ) & "¶" 
-& "Result: " & DictGet ( $result ; "ResultDescription" )]]>
+        <![CDATA[/*"File: " & DictGet ( $result ; "FileName" ) & "¶" 
+& "Script: " & DictGet ( $result ; "ScriptName" ) & "¶" 
+& "Result: " & DictGet ( $result ; "ResultDescription" )*/]]>
 </Calculation>
     </Message>
     <ButtonCaptions>
@@ -386,7 +386,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[FM_Name_ID ( $TableID ; "T" ; Get ( FileName ) ; "" )]]>
+        <![CDATA[/*FM_Name_ID ( $TableID ; "T" ; Get ( FileName ) ; "" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -408,7 +408,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[FM_Name_ID ( $TableName ; "T" ; Get ( FileName ) ; "" )]]>
+        <![CDATA[/*FM_Name_ID ( $TableName ; "T" ; Get ( FileName ) ; "" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -432,15 +432,15 @@ $Method ≠ "V"]]>
     <Text>Send a call to COMMONS to get the CRITERION record marked as the key field for the table and return a dictionary.&#13;&#13;| &#13;Author: phillips &#13;Date: 10/26/2011</Text>
   </Step>
   <Step enable="True" id="1" name="Perform Script">
-    <FileReference id="26" name="a21_COMMONS">
+    <FileReference id="1" name="a21_COMMONS">
       <UniversalPathList>file:a21_COMMONS</UniversalPathList>
     </FileReference>
     <Calculation>
-      <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+      <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "TableID" ; $TableID ) & 
-# ( "KeyFieldOnly" ; 1 )]]>
+# ( "KeyFieldOnly" ; 1 )*/]]>
 </Calculation>
-    <Script id="32794" name="Get Criteria For Table ( FileName, TableID, HumanNameFieldList, KeyFieldOnly )"></Script>
+    <Script id="32794"></Script>
   </Step>
   <Step enable="True" id="89" name="Comment">
     <Text>From the result, grab the FieldID for that field&#13;&#13;| &#13;Author: phillips &#13;Date: 10/26/2011</Text>
@@ -461,7 +461,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( #R ( "FieldDictList" ) ; "FieldDict" )]]>
+        <![CDATA[/*DictGet ( #R ( "FieldDictList" ) ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -474,7 +474,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $KeyFieldDict ; "FieldID" )]]>
+        <![CDATA[/*DictGet ( $KeyFieldDict ; "FieldID" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -487,7 +487,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[$TableName & "::" & FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; $TableName )]]>
+        <![CDATA[/*$TableName & "::" & FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; $TableName )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -594,10 +594,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "No layout was found for the specified Table '" & $TableName & "', so the operation could not proceed." )]]>
+# ( "ResultDescription" ; "No layout was found for the specified Table '" & $TableName & "', so the operation could not proceed." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -615,16 +615,16 @@ $Method ≠ "V"]]>
   <Step enable="True" id="87" name="Show Custom Dialog">
     <Title>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "Result" )]]>
+        <![CDATA[/*DictGet ( $result ; "Result" )*/]]>
 </Calculation>
     </Title>
     <Message>
       <Calculation>
-        <![CDATA["File: " & DictGet ( $result ; "FileName" ) 
-& "¶" 
+        <![CDATA[/*"File: " & DictGet ( $result ; "FileName" ) 
+& "¶" 
 & "Script: " & DictGet ( $result ; "ScriptName" ) 
-& "¶" 
-& "Result: " & DictGet ( $result ; "ResultDescription" )]]>
+& "¶" 
+& "Result: " & DictGet ( $result ; "ResultDescription" )*/]]>
 </Calculation>
     </Message>
     <ButtonCaptions>
@@ -663,7 +663,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[$Method ≠ "C" and not $NoCommit]]>
+      <![CDATA[$Method ≠ "C" and not $NoCommit]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment"></Step>
@@ -724,7 +724,7 @@ $Method ≠ "V"]]>
   </Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[Get ( LastError ) ≠ 0 and Get ( LastError ) ≠ 401]]>
+      <![CDATA[Get ( LastError ) ≠ 0 and Get ( LastError ) ≠ 401]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -733,10 +733,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )]]>
+# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -787,7 +787,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $SearchRequests ; "SearchRequests" )]]>
+        <![CDATA[/*DictGet ( $SearchRequests ; "SearchRequests" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -804,7 +804,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $SearchRequests_ReadTemp ; "Request" )]]>
+        <![CDATA[/*DictGet ( $SearchRequests_ReadTemp ; "Request" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -820,7 +820,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictRemove ( $SearchRequests_ReadTemp ; "Request" )]]>
+        <![CDATA[/*DictRemove ( $SearchRequests_ReadTemp ; "Request" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -851,20 +851,20 @@ $Method ≠ "V"]]>
     <Text>Do a search in COMMONS for each of the fields contained in the Request dictionary using the keys&#13;&#13;| &#13;Author: phillips &#13;Date: 10/26/2011</Text>
   </Step>
   <Step enable="True" id="1" name="Perform Script">
-    <FileReference id="26" name="a21_COMMONS">
+    <FileReference id="1" name="a21_COMMONS">
       <UniversalPathList>file:a21_COMMONS</UniversalPathList>
     </FileReference>
     <Calculation>
-      <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+      <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "TableID" ; $TableID ) & 
-# ( "HumanNameFieldList" ; DictListKeys ( $Request ) )]]>
+# ( "HumanNameFieldList" ; DictListKeys ( $Request ) )*/]]>
 </Calculation>
-    <Script id="32794" name="Get Criteria For Table ( FileName, TableID, HumanNameFieldList, KeyFieldOnly )"></Script>
+    <Script id="32794"></Script>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#R ( "FieldDictList" )]]>
+        <![CDATA[/*#R ( "FieldDictList" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -878,7 +878,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -891,7 +891,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictRemove ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictRemove ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -904,9 +904,9 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) 
+        <![CDATA[/*FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) 
   & "::" 
-  & FM_Name_ID ( DictGet ( $FieldDict ; "FieldID" ) ; "F" ; "" ; FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) )]]>
+  & FM_Name_ID ( DictGet ( $FieldDict ; "FieldID" ) ; "F" ; "" ; FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -919,7 +919,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $Request ; DictGet ( $FieldDict ; "HumanName" ) )]]>
+        <![CDATA[/*DictGet ( $Request ; DictGet ( $FieldDict ; "HumanName" ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -949,20 +949,20 @@ $Method ≠ "V"]]>
   </Step>
   <Step enable="True" id="72" name="Exit Loop If">
     <Calculation>
-      <![CDATA[not DictContains ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+      <![CDATA[/*not DictContains ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="73" name="End Loop"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[DictGet ( $Request ; "Omit" ) = 1]]>
+      <![CDATA[/*DictGet ( $Request ; "Omit" ) = 1*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="25" name="Omit Record"></Step>
   <Step enable="True" id="70" name="End If"></Step>
   <Step enable="True" id="72" name="Exit Loop If">
     <Calculation>
-      <![CDATA[not DictContains ( $SearchRequests_ReadTemp ; "Request" )]]>
+      <![CDATA[/*not DictContains ( $SearchRequests_ReadTemp ; "Request" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="7" name="New Record/Request"></Step>
@@ -983,7 +983,7 @@ $Method ≠ "V"]]>
   </Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[Get ( LastError ) ≠ 0 and Get ( LastError ) ≠ 401]]>
+      <![CDATA[Get ( LastError ) ≠ 0 and Get ( LastError ) ≠ 401]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -992,10 +992,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )]]>
+# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1031,10 +1031,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "No records were found." )]]>
+# ( "ResultDescription" ; "No records were found." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1052,14 +1052,14 @@ $Method ≠ "V"]]>
   <Step enable="True" id="87" name="Show Custom Dialog">
     <Title>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "Result" )]]>
+        <![CDATA[/*DictGet ( $result ; "Result" )*/]]>
 </Calculation>
     </Title>
     <Message>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "FileName" ) & "¶"
+        <![CDATA[/*DictGet ( $result ; "FileName" ) & "¶"
 & DictGet ( $result ; "ScriptName" ) & "¶"
-& DictGet ( $result ; "ResultDescription" )]]>
+& DictGet ( $result ; "ResultDescription" )*/]]>
 </Calculation>
     </Message>
     <ButtonCaptions>
@@ -1097,10 +1097,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "No search method of any type was specified." )]]>
+# ( "ResultDescription" ; "No search method of any type was specified." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1118,14 +1118,14 @@ $Method ≠ "V"]]>
   <Step enable="True" id="87" name="Show Custom Dialog">
     <Title>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "Result" )]]>
+        <![CDATA[/*DictGet ( $result ; "Result" )*/]]>
 </Calculation>
     </Title>
     <Message>
       <Calculation>
-        <![CDATA[DictGet ( $result ; "FileName" ) & "¶"
+        <![CDATA[/*DictGet ( $result ; "FileName" ) & "¶"
 & DictGet ( $result ; "ScriptName" ) & "¶"
-& DictGet ( $result ; "ResultDescription" )]]>
+& DictGet ( $result ; "ResultDescription" )*/]]>
 </Calculation>
     </Message>
     <ButtonCaptions>
@@ -1170,10 +1170,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "No records were found." )]]>
+# ( "ResultDescription" ; "No records were found." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1212,10 +1212,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; "More than one record was found." )]]>
+# ( "ResultDescription" ; "More than one record was found." )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1280,11 +1280,11 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Success" ) & 
 # ( "ResultDescription" ; "Records were found" ) &
-# ( "FoundCount" ; Get ( FoundCount ) )]]>
+# ( "FoundCount" ; Get ( FoundCount ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1345,7 +1345,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "DestinationLayoutID" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "DestinationLayoutID" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1358,7 +1358,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "DestinationLayoutName" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "DestinationLayoutName" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1371,7 +1371,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "NewWindow" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "NewWindow" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1384,7 +1384,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowAlignCenter" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowAlignCenter" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1397,7 +1397,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowAlignLeft" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowAlignLeft" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1410,7 +1410,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowAlignRight" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowAlignRight" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1423,7 +1423,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowCascade" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowCascade" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1436,7 +1436,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "ResizeToFit" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "ResizeToFit" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1449,7 +1449,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowAlignTop" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowAlignTop" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1462,7 +1462,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "StatusAreaShow" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "StatusAreaShow" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1475,7 +1475,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "StatusAreaHide" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "StatusAreaHide" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1488,7 +1488,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $ViewParametersDict ; "WindowTitle" )]]>
+        <![CDATA[/*DictGet ( $ViewParametersDict ; "WindowTitle" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1510,7 +1510,7 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[FM_Name_ID ( $DestinationLayoutID ; "L" ; Get ( FileName ) ; "" )]]>
+        <![CDATA[/*FM_Name_ID ( $DestinationLayoutID ; "L" ; Get ( FileName ) ; "" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1558,7 +1558,7 @@ $Method ≠ "V"]]>
   </Step>
   <Step enable="True" id="6" name="Go to Layout">
     <LayoutDestination value="LayoutNameByCalc"></LayoutDestination>
-    <Layout>
+    <Layout id="0" name="">
       <Calculation>
         <![CDATA[$DestinationLayoutName]]>
 </Calculation>
@@ -1566,7 +1566,7 @@ $Method ≠ "V"]]>
   </Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[Get ( LastError ) ≠ 0]]>
+      <![CDATA[Get ( LastError ) ≠ 0]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -1575,10 +1575,10 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Error" ) & 
-# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )]]>
+# ( "ResultDescription" ; ErrorCode ( Get ( LastError ) ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1743,11 +1743,11 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "ScriptName" ; Get ( ScriptName ) ) & 
 # ( "Result" ; "Success" ) & 
 # ( "ResultDescription" ; "Records were found" ) &
-# ( "FoundCount" ; Get ( FoundCount ) )]]>
+# ( "FoundCount" ; Get ( FoundCount ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1810,9 +1810,9 @@ $Method ≠ "V"]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[Evaluate ( 
+        <![CDATA[/*Evaluate ( 
 
-FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
+FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1827,21 +1827,21 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   </Step>
   <Step enable="True" id="1" name="Perform Script">
     <Calculation>
-      <![CDATA[   # ( "TableName" ; $TableName )
+      <![CDATA[/*   # ( "TableName" ; $TableName )
 & # ( "Method" ; "U" ) 
 & # ( "KeyFieldValue" ; $NewRecKeyFieldValue )
 & # ( "U_UpdateDict" ; $U_UpdateDict )
 & # ( "R_FieldList" ; $R_FieldList )
 
 
-& # ( "NoCommit" ; 1 )]]>
+& # ( "NoCommit" ; 1 )*/]]>
 </Calculation>
-    <Script id="32903" name="CRUDFV ( params )"></Script>
+    <Script id="0" name="&lt;unknown&gt;"></Script>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#R( "ReturnDict" )]]>
+        <![CDATA[/*#R( "ReturnDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1855,11 +1855,11 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "Result" ; "Success" ) 
+        <![CDATA[/*# ( "Result" ; "Success" ) 
 & # ( "FileName" ; Get ( FileName ) ) 
 & # ( "ScriptName" ; Get ( ScriptName ) ) 
 & # ( "ResultDescription" ; "Created record." ) 
-& #( "ReturnDict"; $ReturnDict )]]>
+& #( "ReturnDict"; $ReturnDict )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1902,20 +1902,20 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="1" name="Perform Script">
-    <FileReference id="26" name="a21_COMMONS">
+    <FileReference id="1" name="a21_COMMONS">
       <UniversalPathList>file:a21_COMMONS</UniversalPathList>
     </FileReference>
     <Calculation>
-      <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+      <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "TableID" ; $TableID ) & 
-# ( "HumanNameFieldList" ; DictListKeys ( $U_UpdateDict ) )]]>
+# ( "HumanNameFieldList" ; DictListKeys ( $U_UpdateDict ) )*/]]>
 </Calculation>
-    <Script id="32794" name="Get Criteria For Table ( FileName, TableID, HumanNameFieldList, KeyFieldOnly )"></Script>
+    <Script id="32794"></Script>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#R ( "FieldDictList" )]]>
+        <![CDATA[/*#R ( "FieldDictList" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -1999,7 +1999,7 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2012,7 +2012,7 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictRemove ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictRemove ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2025,7 +2025,7 @@ FM_Name_ID ( $KeyFieldID ; "F" ; Get ( FileName ) ; "" ) )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[FM_Name_ID ( 
+        <![CDATA[/*FM_Name_ID ( 
     DictGet ( $FieldDict ; "TableID" ) & "::" & DictGet ( $FieldDict ; "FieldID" ) 
   ; "T" 
   ; Get ( FileName ) 
@@ -2037,7 +2037,7 @@ FM_Name_ID (
     DictGet ( $FieldDict ; "TableID" ) & "::" & DictGet ( $FieldDict ; "FieldID" ) 
   ; "F" 
   ; Get ( FileName ) 
-  ; "" )]]>
+  ; "" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2049,7 +2049,7 @@ FM_Name_ID (
   </Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[DictGet( $FieldDict; "UseAlternateKey" )]]>
+      <![CDATA[/*DictGet( $FieldDict; "UseAlternateKey" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -2058,7 +2058,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "FieldKey" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "FieldKey" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2075,7 +2075,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "HumanName" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "HumanName" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2089,7 +2089,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $U_UpdateDict ; $fieldKey )]]>
+        <![CDATA[/*DictGet ( $U_UpdateDict ; $fieldKey )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2113,7 +2113,7 @@ FM_Name_ID (
   </Step>
   <Step enable="True" id="72" name="Exit Loop If">
     <Calculation>
-      <![CDATA[not DictContains ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+      <![CDATA[/*not DictContains ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="73" name="End Loop"></Step>
@@ -2172,15 +2172,15 @@ FM_Name_ID (
     <Text>IMPORTANT: Script exptects a list (return-delimited) of Human Names to return. If no list is specified, all CRITERIA are returned&#13;&#13;| &#13;Author: phillips &#13;Date: 10/26/2011</Text>
   </Step>
   <Step enable="True" id="1" name="Perform Script">
-    <FileReference id="26" name="a21_COMMONS">
+    <FileReference id="1" name="a21_COMMONS">
       <UniversalPathList>file:a21_COMMONS</UniversalPathList>
     </FileReference>
     <Calculation>
-      <![CDATA[# ( "FileName" ; Get ( FileName ) ) & 
+      <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) & 
 # ( "TableID" ; $TableID ) & 
-# ( "HumanNameFieldList" ; $R_FieldList )]]>
+# ( "HumanNameFieldList" ; $R_FieldList )*/]]>
 </Calculation>
-    <Script id="32794" name="Get Criteria For Table ( FileName, TableID, HumanNameFieldList, KeyFieldOnly )"></Script>
+    <Script id="32794"></Script>
   </Step>
   <Step enable="True" id="89" name="Comment">
     <Text>Grab the item FieldDictList from the resulting Dictionary&#13;&#13;| &#13;Author: phillips &#13;Date: 10/26/2011</Text>
@@ -2188,7 +2188,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#R ( "FieldDictList" )]]>
+        <![CDATA[/*#R ( "FieldDictList" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2220,7 +2220,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2233,7 +2233,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictRemove ( $fieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictRemove ( $fieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2246,7 +2246,7 @@ FM_Name_ID (
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[IsEmpty( DictGet ( $FieldDict ; "FieldID" ) )]]>
+      <![CDATA[/*IsEmpty( DictGet ( $FieldDict ; "FieldID" ) )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -2255,7 +2255,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "CurrentEvalString" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "CurrentEvalString" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2268,9 +2268,9 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#( "FieldDict"
+        <![CDATA[/*#( "FieldDict"
    ; $FieldDict & #( "EvalString"; $evalString )
-   )]]>
+   )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2284,9 +2284,9 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[     FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) 
+        <![CDATA[/*     FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) 
   & "::" 
-  & FM_Name_ID ( DictGet ( $FieldDict ; "FieldID" ) ; "F" ; "" ; FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) )]]>
+  & FM_Name_ID ( DictGet ( $FieldDict ; "FieldID" ) ; "F" ; "" ; FM_Name_ID ( DictGet ( $FieldDict ; "TableID" ) ; "T" ; "" ; "" ) )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2299,9 +2299,9 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[#( "FieldDict"
+        <![CDATA[/*#( "FieldDict"
    ; $FieldDict & #( "FieldName"; $fieldName )
-   )]]>
+   )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2329,7 +2329,7 @@ FM_Name_ID (
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="72" name="Exit Loop If">
     <Calculation>
-      <![CDATA[not DictContains ( $fieldDictList_ReadTemp ; "FieldDict" )]]>
+      <![CDATA[/*not DictContains ( $fieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="73" name="End Loop"></Step>
@@ -2382,7 +2382,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictGet ( $FieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2395,7 +2395,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictRemove ( $fieldDictList_ReadTemp ; "FieldDict" )]]>
+        <![CDATA[/*DictRemove ( $fieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2408,13 +2408,13 @@ FM_Name_ID (
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[DictContains ( $FieldDict ; "FieldName" )]]>
+      <![CDATA[/*DictContains ( $FieldDict ; "FieldName" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "FieldName" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "FieldName" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2440,13 +2440,13 @@ FM_Name_ID (
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="125" name="Else If">
     <Calculation>
-      <![CDATA[DictContains ( $FieldDict ; "EvalString" )]]>
+      <![CDATA[/*DictContains ( $FieldDict ; "EvalString" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "EvalString" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "EvalString" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2480,7 +2480,7 @@ FM_Name_ID (
   <Step enable="True" id="89" name="Comment"></Step>
   <Step enable="True" id="68" name="If">
     <Calculation>
-      <![CDATA[DictGet( $FieldDict; "UseAlternateKey" )]]>
+      <![CDATA[/*DictGet( $FieldDict; "UseAlternateKey" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="89" name="Comment">
@@ -2489,7 +2489,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "FieldKey" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "FieldKey" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2506,7 +2506,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[DictGet ( $FieldDict ; "HumanName" )]]>
+        <![CDATA[/*DictGet ( $FieldDict ; "HumanName" )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2520,7 +2520,7 @@ FM_Name_ID (
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( $fieldKey ; $fieldValue )]]>
+        <![CDATA[/*# ( $fieldKey ; $fieldValue )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2549,7 +2549,7 @@ $oneField )]]>
   </Step>
   <Step enable="True" id="72" name="Exit Loop If">
     <Calculation>
-      <![CDATA[not DictContains ( $fieldDictList_ReadTemp ; "FieldDict" )]]>
+      <![CDATA[/*not DictContains ( $fieldDictList_ReadTemp ; "FieldDict" )*/]]>
 </Calculation>
   </Step>
   <Step enable="True" id="73" name="End Loop"></Step>
@@ -2557,11 +2557,11 @@ $oneField )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[List( $ReturnDict; 
+        <![CDATA[/*List( $ReturnDict; 
 #( "Record"
    ; $fieldPairList 
    )
-)]]>
+)*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2596,12 +2596,12 @@ $KeyFieldValue = GetField( $keyFieldName )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[If( IsEmpty( $updateFailureListKeys )
+        <![CDATA[/*If( IsEmpty( $updateFailureListKeys )
   ; ""
   ; #( "Error"
       ; #( "ErrorType"; "Update Failure Record Locked" ) & # ( "ErrorPrimaryKeyList" ; $updateFailureListKeys ) 
       )
-  )]]>
+  )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2629,12 +2629,12 @@ $KeyFieldValue = GetField( $keyFieldName )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "FileName" ; Get ( FileName ) ) 
+        <![CDATA[/*# ( "FileName" ; Get ( FileName ) ) 
 & # ( "ScriptName" ; Get ( ScriptName ) ) 
 & # ( "Result" ; "Success" ) 
 & # ( "ResultCount" ; Get ( FoundCount ) ) 
 & # ( "ReturnDict" ; $ReturnDict )
-& #( "ErrorDicts"; $ErrorDicts )]]>
+& #( "ErrorDicts"; $ErrorDicts )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2839,12 +2839,12 @@ $KeyFieldValue = GetField( $keyFieldName )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[If( IsEmpty( $lockedListKeys )
+        <![CDATA[/*If( IsEmpty( $lockedListKeys )
   ; ""
   ; #( "Error"
       ; #( "ErrorType"; "Delete Failure Record Locked" ) & # ( "ErrorPrimaryKeyList" ; $lockedListKeys ) 
       )
-  )]]>
+  )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2870,12 +2870,12 @@ $KeyFieldValue = GetField( $keyFieldName )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[If( IsEmpty( $deleteFailureListKeys )
+        <![CDATA[/*If( IsEmpty( $deleteFailureListKeys )
   ; ""
   ; #( "Error"
       ; #( "ErrorType"; "Delete Failure Not Locked" ) & # ( "ErrorPrimaryKeyList" ; $deleteFailureListKeys ) 
       )
-  )]]>
+  )*/]]>
 </Calculation>
     </Value>
     <Repetition>
@@ -2902,12 +2902,12 @@ $KeyFieldValue = GetField( $keyFieldName )]]>
   <Step enable="True" id="141" name="Set Variable">
     <Value>
       <Calculation>
-        <![CDATA[# ( "Result" ; "Success" ) 
+        <![CDATA[/*# ( "Result" ; "Success" ) 
 & # ( "FileName" ; Get ( FileName ) ) 
 & # ( "ScriptName" ; Get ( ScriptName ) ) 
 & 
 # ( "ResultDescription"; "Deleted " & $deleteCount & " record" & If( $deleteCount = 1; ""; "s" ) & "." )
-& # ( "ErrorDicts" ; $ErrorDicts )]]>
+& # ( "ErrorDicts" ; $ErrorDicts )*/]]>
 </Calculation>
     </Value>
     <Repetition>
